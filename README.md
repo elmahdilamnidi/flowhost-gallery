@@ -12,6 +12,6 @@ GitHub Pages is free for public repositories. The first deployment starts after 
 
 ## Before publishing
 
-- Gallery photos are optimized WebP files. Keep their filenames and letter case in sync with the paths in `js/gallery.js`.
+- Gallery photos are resized, quality-optimized WebP files; cards below the fold load lazily while the first hero photo is preloaded. Keep filenames and letter case in sync with `js/gallery.js` and the hero preload in `index.html`.
 - Update the WhatsApp number and any booking or review links in `js/gallery.js` if they change.
 - The booking form opens WhatsApp; it does not process payments or store reservations.
