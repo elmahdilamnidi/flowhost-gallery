@@ -1,0 +1,180 @@
+/* =====================================================================
+   gallery.css  -  The Flowhost
+   Les couleurs/largeur f :root, mn b3d kol bloc dyal l'page b titre dyalo.
+   ===================================================================== */
+
+/* ---------- 1) Variables + base ---------- */
+:root{
+  --bg:#f9f3d9;        /* fond dyal l'page (crème) */
+  --dark:#3a2d24;      /* marron ghamq: texte, boutons, bar */
+  --brown:#967965;     /* marron l'logo: accents */
+  --deep:#4a382c;      /* strip dyal stats */
+  --card:#fffaf0;      /* fond dyal cards */
+  --muted:#6b5a4c;     /* texte sghir/mkhfif */
+  --cream:#f9f3d9;     /* texte 3la fond ghamq */
+  --line:#eadfbf;      /* khtout rqiqa */
+  --ink:#3a2d24;       /* texte principal */
+  --w:1100px;          /* 3ard l'contenu (kaykber f screens kbar, ta7t) */
+  --head:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;   /* font dyal titres */
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);          /* iPhone notch */
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}   /* ma ykbrch l'texte f iOS, scroll nqi */
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;font-size:17px;overflow-x:clip}   /* overflow-x:clip => ma ykounch scroll jnbi */
+h1,h2,h3{font-family:var(--head);margin:0}
+p{margin:0 0 12px}
+
+/* ---------- 2) Hero (laptop): tswira katghti kolchi ---------- */
+.hero{position:relative;height:clamp(520px,88vh,820px);height:clamp(520px,88svh,820px);background:var(--dark);color:var(--cream);overflow:hidden}
+.slides{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}   /* tsawer sf wa7d, swipe */
+.slides::-webkit-scrollbar{display:none}
+.slides>*{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:center}      /* cover = tswira katmla l'hero */
+.sl{display:flex;align-items:center;justify-content:center}   /* placeholder (ila SLIDES khawya) */
+.sl i{width:min(46vw,300px);aspect-ratio:1;border-radius:50%;background:url(../images/logo.png) center/cover;opacity:.28;margin-top:-80px}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(30,22,16,.88) 0%,rgba(30,22,16,.35) 45%,rgba(30,22,16,.25) 100%)}   /* dll mn t7t bach l'texte yban */
+.brand{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));left:22px;z-index:2;width:64px;height:64px;border-radius:50%;display:block}   /* logo f lfo9 */
+.hero-text{position:absolute;left:0;right:0;bottom:0;max-width:var(--w);margin:0 auto;padding:0 max(22px,env(safe-area-inset-right)) 64px max(22px,env(safe-area-inset-left));pointer-events:none}
+.hero-text>*{pointer-events:auto}     /* l'texte kayt9bl klik, l'bloc la (bach swipe 3la tswira ykhdem) */
+.pill{display:inline-block;border:1.5px solid var(--cream);border-radius:999px;padding:5px 16px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:18px}
+.hero h1{font-size:clamp(2.8rem,10vw,6.6rem);line-height:.92;font-weight:800;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:14px}
+.hero-text p{font-size:1.3rem;margin-bottom:26px;max-width:600px}
+.hero .btn{padding:15px 28px;transition:transform .2s}
+.hero .btn:hover{transform:translateY(-2px)}
+.dots{position:absolute;z-index:2;right:22px;bottom:26px;display:flex;gap:8px}   /* noqat dyal slideshow */
+.dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(249,243,217,.5);cursor:pointer}
+.dots button.on{width:24px;border-radius:6px;background:var(--cream)}
+
+/* ---------- 3) Strip dyal stats ---------- */
+.stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--deep);color:var(--cream);text-align:center}
+.stats li{padding:18px 10px;border-right:1px solid rgba(249,243,217,.18);font-size:.9rem}
+.stats li:last-child{border-right:0}
+.stats b{display:block;font-family:var(--head);font-size:1.4rem;line-height:1.1}
+
+/* ---------- 4) Sections + grid dyal cards ---------- */
+.sec{max-width:var(--w);margin:0 auto;padding:70px max(22px,env(safe-area-inset-right)) 0 max(22px,env(safe-area-inset-left))}   /* kol section: nfs l'3ard */
+.eyebrow{margin:0 0 8px;color:var(--brown);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}   /* kelma sghira fo9 titre */
+.sec h2{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.05;font-weight:800;letter-spacing:-.02em;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}   /* phone 1 col, iPad 2, laptop 3 */
+.card,.inc{min-width:0}
+
+/* ---------- 5) Card dyal room/food/activity ---------- */
+.card{background:var(--card);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 2px transparent;transition:box-shadow .2s}
+.card.on{box-shadow:0 0 0 2px var(--brown)}       /* card mkhtara = ktar bordure */
+.ph{aspect-ratio:4/3;background:var(--brown) center/cover no-repeat;display:flex;align-items:center;justify-content:center}   /* blasa dyal tswira */
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph.multi{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}   /* bzaf d tsawer = swipe */
+.ph.multi::-webkit-scrollbar{display:none}
+.ph.multi img{flex:0 0 100%;scroll-snap-align:center}
+/* tsawer b bzaf: wrapper + noqat */
+.phw{position:relative}
+.ph.multi{overscroll-behavior-x:contain;cursor:grab}   /* swipe f tswira ma yrj3ch l page li qbl */
+.ph.multi.drag{scroll-snap-type:none;cursor:grabbing;user-select:none}   /* mnin kanjerro b l'souris */
+.ph.multi img{-webkit-user-drag:none;user-select:none}
+.ph-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.ph-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:0 0 0 1px rgba(0,0,0,.12);transition:width .2s,background .2s}
+.ph-dots i.on{width:18px;border-radius:5px;background:#fff}
+/* nudge: tswira kat7rk chwiya w t3awd (hint dyal swipe) */
+@keyframes nudge{0%,100%{transform:none}40%{transform:translateX(-28px)}}
+.ph.multi.nudge img{animation:nudge 1s ease .3s 1}
+@media(prefers-reduced-motion:reduce){.ph.multi.nudge img{animation:none}}
+.ph i{width:70px;height:70px;border-radius:50%;background:url(../images/logo.png) center/cover;opacity:.35}   /* logo ila ma kaynch tswira */
+.bd{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.tag{display:block;color:var(--brown);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.72rem;margin-bottom:4px}
+.bd h3{font-size:1.25rem;margin-bottom:6px}
+.bd p{color:var(--muted);font-size:.93rem;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px}   /* prix + bouton */
+.price{font-family:var(--head);font-weight:800;font-size:1.15rem}
+.price small{font:400 .8rem system-ui;color:var(--muted)}
+button.add{min-height:44px;border:0;background:var(--dark);color:var(--cream);padding:10px 20px;border-radius:999px;font-weight:700;font-size:.9rem;cursor:pointer}   /* 44px = f9 sbe3 */
+.card.on button.add{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--brown)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--brown);outline-offset:2px}   /* clavier */
+
+/* ---------- 6) Section "included" (bloc dark) ---------- */
+.band{margin-top:70px;background:var(--dark);color:var(--cream);padding-bottom:70px}
+.band .eyebrow{color:#c9b29c}
+.inc{border:1.5px solid rgba(249,243,217,.2);border-radius:18px;padding:22px}
+.inc h3{font-size:1.15rem;margin-bottom:4px}
+.inc p{margin:0;color:#d8cdb4;font-size:.93rem}
+.inc .ph{aspect-ratio:16/9;border-radius:12px;margin-bottom:14px}
+.inc .phw{margin-bottom:14px;border-radius:12px;overflow:hidden}
+.inc .phw .ph{margin-bottom:0;border-radius:0}
+
+/* ---------- 7) Formulaire "When are you coming?" + quantity ---------- */
+.stay{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;align-items:end;background:var(--card);border-radius:18px;padding:20px}
+.stay label{display:flex;flex-direction:column;gap:6px;font-size:.85rem;font-weight:700;color:var(--muted)}
+.stay input{padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-weight:600;width:100%;min-height:44px;-webkit-appearance:none;appearance:none}   /* appearance:none = iOS date input */
+.nl{font-family:var(--head);font-weight:800;font-size:1.1rem;padding:10px 0}      /* "4 nights" */
+.qty{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:.88rem;color:var(--muted)}
+.qty button{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--brown);background:transparent;color:var(--ink);font-size:1.1rem;line-height:1;cursor:pointer}
+.qty b{min-width:2ch;text-align:center;color:var(--ink)}
+
+/* ---------- 8) Boutons ---------- */
+.btn{display:inline-block;min-height:44px;background:var(--cream);color:var(--dark);text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px}
+.btn[aria-disabled="true"]{opacity:.55}    /* bouton WhatsApp mchfr */
+
+/* ---------- 9) Reviews ---------- */
+.rv{padding-bottom:70px}
+.rv-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.rv-head h2{margin:0}
+.rv-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap}      /* les boutons "Review on ..." */
+.btn.rv-btn{background:var(--dark);color:var(--cream);padding:12px 22px;display:inline-flex;align-items:center;gap:8px}   /* .btn.rv-btn (qwi) bach .btn ma ytghlbhach */
+.rv-dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}   /* nqta mlwna: Google/Tripadvisor */
+.rv-sub{margin:8px 0 0;color:var(--muted)}
+/* cards dyal tqyim (5.0 ★ Google · 98 reviews) */
+.rv-rate{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 18px}
+.rv-rate>*{display:flex;flex-direction:column;gap:2px;min-width:170px;padding:16px 24px;background:var(--card);border-radius:18px;color:var(--ink);text-decoration:none}
+.rv-rate b{font-family:var(--head);font-size:1.9rem;line-height:1;font-weight:800}
+.rv-rate b i{font-style:normal;color:#b88a2e;font-size:1.4rem}
+.rv-rate span{font-size:.88rem;color:var(--muted)}
+.rv-rate a{transition:transform .2s}
+.rv-rate a:hover{transform:translateY(-2px)}
+/* slider: saf wa7d, swipe/jrr; card 340px bach 7ta l'ba9i yban chwiya */
+.rv-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 2px 8px;cursor:grab}
+.rv-track::-webkit-scrollbar{display:none}
+.rv-track.drag{scroll-snap-type:none;cursor:grabbing;user-select:none}   /* mnin kanjerro b l'souris */
+.rv-track .rv-card{flex:0 0 min(86%,340px);scroll-snap-align:start}
+/* card wa7da */
+.rv-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.rv-card .st{color:#b88a2e;letter-spacing:.1em;font-size:1.05rem}      /* nojoum */
+.rv-card p{margin:0;font-size:.95rem}
+.rv-card p.clamp{display:-webkit-box;-webkit-line-clamp:6;line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}   /* texte t9ta3 f 6 stor */
+.rv-title{font-size:1.05rem}
+.rv-note{font-size:.78rem;color:var(--muted);font-style:italic}       /* "Translated from German" */
+.rv-more{align-self:flex-start;min-height:32px;padding:0;border:0;background:none;color:var(--brown);font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rv-by{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.88rem;color:var(--muted)}   /* smiya + tarikh + source */
+.rv-by b{color:var(--ink);font-family:var(--head)}
+.rv-g{font-weight:700;color:var(--brown)}
+
+/* ---------- 10) Footer + bar sticky (WhatsApp) ---------- */
+.foot{margin-top:0;background:var(--brown);color:var(--cream);text-align:center;padding:40px 22px 110px}   /* 110px t7t = blasa l'bar */
+.foot img{width:64px;height:64px;border-radius:50%;margin-bottom:10px}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px max(18px,calc((100% - var(--w))/2 + 22px)) calc(10px + env(safe-area-inset-bottom,0px));background:var(--dark);color:var(--cream)}
+.bar small{display:block;opacity:.75;font-size:.76rem;line-height:1.2}
+.bar b{font-family:var(--head);font-size:1.35rem}
+
+/* ---------- 11) Phone + iPad: tswira katghatti l'hero w l'texte fo9ha ---------- */
+@media(min-width:701px) and (max-width:1200px){
+  .hero{height:clamp(520px,88svh,820px)}
+  .slides{height:100%}
+  .slides>*{object-fit:cover}
+  .dots{top:26px;right:22px;bottom:auto}
+  .hero-text{padding:0 max(22px,env(safe-area-inset-right)) 64px max(22px,env(safe-area-inset-left))}
+  .hero h1{font-size:clamp(2.8rem,10vw,4.8rem)}
+}
+
+/* ---------- 12) Screens kbar w telephones sghar ---------- */
+@media(min-width:1500px){:root{--w:1240px}}          /* contenu kbar chwiya f screens kbar */
+@media(max-width:600px){
+  body{font-size:16px}
+  .sec{padding-top:52px}
+  .hero-text{padding-bottom:52px}
+  .hero h1{font-size:clamp(2.4rem,13vw,3.6rem)}
+  .hero-text p{font-size:1.05rem}
+  .stats li:nth-child(2n){border-right:0}
+  .stats li{border-bottom:1px solid rgba(249,243,217,.18)}
+  .bar{gap:8px}
+  .bar .btn{padding:12px 18px}
+}
+@media(hover:none){.btn:hover,.hero .btn:hover{transform:none}}   /* touch: hover ma ykounch "mlsok" */

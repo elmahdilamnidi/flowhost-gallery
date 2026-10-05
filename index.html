@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="images/logo.png">
+<link rel="preload" as="image" href="images/hero/workspace.webp" fetchpriority="high">
+<title>The Flowhost – Build your stay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+<header class="hero">
+  <div class="slides" id="slides"></div>
+  <div class="shade"></div>
+  <img class="brand" src="images/logo.png" alt="The Flowhost logo">
+  <div class="hero-text">
+    <span class="pill">Tamraght &middot; Morocco</span>
+    <h1>Build<br>your stay</h1>
+    <p>Pick your room, food and activities. Send us your choice on WhatsApp and we'll confirm everything.</p>
+    <a class="btn" href="#stay">Choose your stay</a>
+  </div>
+</header>
+<ul class="stats">
+  <li><b>5.0 &#9733;</b> on Airbnb, Google &amp; Tripadvisor</li><li><b>Rooftop</b> ocean &amp; mountain view</li><li><b>Beach</b> access</li><li><b>Free</b> parking</li>
+</ul>
+<section class="sec" id="stay">
+  <p class="eyebrow">Your stay</p><h2>When are you coming?</h2>
+  <div class="stay">
+    <label>Your name<input id="gname" type="text" autocomplete="name" placeholder="Optional"></label>
+    <label>Check-in<input id="cin" type="date"></label>
+    <label>Check-out<input id="cout" type="date"></label>
+    <label>Guests<input id="guests" type="number" min="1" max="30" value="1" inputmode="numeric"></label>
+    <div class="nl" id="nl">Pick your dates</div>
+  </div>
+</section>
+<main id="app"></main>
+<section class="sec rv" id="reviews"></section>
+<footer class="foot"><img src="images/logo.png" alt=""><div>&copy; The Flowhost &middot; Tamraght, Morocco</div></footer>
+<div class="bar">
+  <div><small id="sub">Pick at least one item</small><b id="tot">&mdash;</b></div>
+  <a class="btn" id="send" href="#" target="_blank" rel="noopener" aria-disabled="true">Send on WhatsApp</a>
+</div>
+<script src="js/gallery.js"></script>
+</body>
+</html>

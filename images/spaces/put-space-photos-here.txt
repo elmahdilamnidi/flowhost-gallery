@@ -1,0 +1,1 @@
+Put shared-places photos here. Example: images/spaces/rooftop.webp

@@ -1,0 +1,1 @@
+Put room photos here (jpg/webp, ~1600px wide). Example: images/rooms/boho.jpg
